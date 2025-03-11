@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { Button } from '@material-ui/core';
 import { NavHashLink as NavLink } from 'react-router-hash-link';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { motion } from 'framer-motion';
+import Slider from 'react-slick';
 import './Landing.css';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import { headerData } from '../../data/headerData';
@@ -69,11 +70,15 @@ function Landing() {
 
     return (
         <div className='landing'>
-            <div className='landing--container'>
-                <div
-                    className='landing--container-left'
-                    style={{ backgroundColor: theme.primary }}
-                >
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+                className='landing--container'
+            >                <div
+                className='landing--container-left'
+                style={{ backgroundColor: theme.primary }}
+            >
                     <div className='lcl--content'>
                         {socialsData.linkedIn && (
                             <a
@@ -149,13 +154,37 @@ function Landing() {
                     style={{
                         opacity: `${drawerOpen ? '0' : '1'}`,
                         borderColor: theme.secondary,
+                        animation: 'rotate 6s infinite linear'
+
                     }}
                 />
                 <div
                     className='landing--container-right'
-                    style={{ backgroundColor: theme.secondary }}
+                    style={{
+                        position: 'relative', 
+                        overflow: 'hidden', 
+                    }}
                 >
-                    <div
+                    <video
+                        src={headerData.bg}  
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        style={{
+                            position: 'absolute',
+                            top: '0',
+                            left: '0',
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover', // Ensures the video covers the whole container
+                            zIndex: '-1', // Keeps the video behind the content
+                        }}
+                    />
+
+                    <motion.div
+                        animate={{ x: [0, 10, -10, 10, 0] }}  // Horizontal shake effect
+                        transition={{ duration: 2, ease: 'easeInOut', times: [0, 0.25, 0.5, 0.75, 1] }}  // Increased duration
                         className='lcr--content'
                         style={{ color: theme.tertiary }}
                     >
@@ -171,7 +200,7 @@ function Landing() {
                                     target='_blank'
                                     rel='noreferrer'
                                 >
-                                    <Button className={classes.resumeBtn} style={{color:theme.white}}>
+                                    <Button className={classes.resumeBtn} style={{ color: theme.white }}>
                                         Download CV
                                     </Button>
                                 </a>
@@ -182,14 +211,15 @@ function Landing() {
                                 spy='true'
                                 duration={2000}
                             >
-                                <Button className={classes.contactBtn} style={{color:theme.white}}>
+                                <Button className={classes.contactBtn} style={{ color: theme.white }}>
                                     Contact
                                 </Button>
                             </NavLink>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
-            </div>
+
+            </motion.div >
         </div>
     );
 }

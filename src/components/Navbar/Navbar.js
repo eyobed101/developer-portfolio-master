@@ -106,6 +106,7 @@ function Navbar() {
         drawerLinks: {
             fontFamily: 'var(--primaryFont)',
             width: '50%',
+            color: theme.white,
             fontSize: '1.3rem',
             fontWeight: 600,
             [t.breakpoints.down('sm')]: {
@@ -114,6 +115,7 @@ function Navbar() {
         },
         drawerIcon: {
             fontSize: '1.6rem',
+            color: theme.white,
             [t.breakpoints.down('sm')]: {
                 fontSize: '1.385rem',
             },
