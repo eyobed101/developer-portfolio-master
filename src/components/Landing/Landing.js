@@ -156,6 +156,8 @@ function Landing() {
                         borderColor: theme.secondary,
                         animation: 'rotate 6s infinite linear',
                         position: 'absolute',
+                        
+                        zIndex: '2', // Ensures the image appears above content
 
 
 
@@ -169,7 +171,8 @@ function Landing() {
                     }}
                 >
                     <video
-                        src={headerData.bg}  
+                        src={headerData.bg} 
+ 
                         autoPlay
                         loop
                         muted
@@ -189,9 +192,9 @@ function Landing() {
                         animate={{ x: [0, 10, -10, 10, 0] }}  // Horizontal shake effect
                         transition={{ duration: 2, ease: 'easeInOut', times: [0, 0.25, 0.5, 0.75, 1] }}  // Increased duration
                         className='lcr--content'
-                        style={{ color: theme.tertiary ,        position: 'relative',                        overflow: 'hidden', 
+                        style={{ color: theme.tertiary , 
 
-                            backgroundColor: 'rgba(0, 0, 0, 0.5)', // Transparent background card
+                            backgroundColor: 'rgba(0, 0, 0, 0.3)', // Transparent background card
                             padding: '30px',
                             borderRadius: '10px'}}
                     >
