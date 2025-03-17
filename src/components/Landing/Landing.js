@@ -154,7 +154,10 @@ function Landing() {
                     style={{
                         opacity: `${drawerOpen ? '0' : '1'}`,
                         borderColor: theme.secondary,
-                        animation: 'rotate 6s infinite linear'
+                        animation: 'rotate 6s infinite linear',
+                        position: 'absolute',
+
+
 
                     }}
                 />
@@ -186,7 +189,11 @@ function Landing() {
                         animate={{ x: [0, 10, -10, 10, 0] }}  // Horizontal shake effect
                         transition={{ duration: 2, ease: 'easeInOut', times: [0, 0.25, 0.5, 0.75, 1] }}  // Increased duration
                         className='lcr--content'
-                        style={{ color: theme.tertiary }}
+                        style={{ color: theme.tertiary ,        position: 'relative',                        overflow: 'hidden', 
+
+                            backgroundColor: 'rgba(0, 0, 0, 0.5)', // Transparent background card
+                            padding: '30px',
+                            borderRadius: '10px'}}
                     >
                         <h6>{headerData.title}</h6>
                         <h1>{headerData.name}</h1>
